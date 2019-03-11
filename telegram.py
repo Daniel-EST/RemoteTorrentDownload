@@ -22,6 +22,11 @@ class TelegramClass():
             
         requests.get(request, params=request_params)
         
+    def send_image(self, image, caption):
+        """Sends an image for the current chat_id"""
+        
+        ## TODO: send_image function properly
+        
     def read_message(self):
         """Read the last message received by the bot"""
         
