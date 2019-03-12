@@ -44,7 +44,7 @@ class TelegramClass():
         
         # TO DO: CREATE A PROPER FUNCTION THAT SKIPS IF THE LAST MESSAGE
         # WAS ALREADY READ
-        
+            
         if req.status_code==200:
             json_data = req.json()
             received_message = json_data['result'][0]['message']['text']

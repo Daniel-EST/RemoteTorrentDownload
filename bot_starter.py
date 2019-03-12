@@ -1,19 +1,37 @@
 import re
 import time
 
-import subprocess
-
 import telegram as tg
 from torrent_download import torrent_download
 
-while True:
-    # Reads last received message
-    message = teste.read_message()
+# Load API keys
+with open('api_keys') as text_obj:
+    telegram_key = text_obj.readline().strip() + '/'
+    telegram_chat_id = text_obj.readline().strip()
     
-    # Checking if message corresponds to an action
-    torrent_download(message)
+tg_bot = tg.TelegramClass(telegram_key, telegram_chat_id)
+
+temp = ''
+
+print('Programm started!')
+
+try:
+    while True:
+        # Reads last received message
+        message = tg_bot.read_message()
     
-    # Giving some time to API server
-    time.sleep(2.5)
+        if message!=temp:
+            # Checking if message corresponds to an action
+            tg_bot.send_message('Download started!')
+        
+            print('Download started!')
+            torrent_download(message)
     
-# TO DO: ADD MORE BOT ACTIONS
+        temp = message
+    
+        # Giving some time to API server
+        time.sleep(2.5)
+except KeyboardInterrupt:
+    print('Programm ended')
+    
+## TODO: ADD MORE BOT ACTIONS
