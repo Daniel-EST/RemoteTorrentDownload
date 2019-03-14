@@ -20,7 +20,7 @@ def torrent_download(message, telegram_bot):
         except FileNotFoundError:
             pass
         
-        tg_bot.send_message('Download started!')
+        telegram_bot.send_message('Download started!')
         print('Download started!')
         
         ## TODO: Create my own torrent downloader so I don't need to use a subprocess
