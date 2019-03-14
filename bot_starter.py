@@ -22,7 +22,7 @@ try:
     
         if message!=temp:
             # Checking if message corresponds to an action
-            torrent_download(message)
+            torrent_download(message, tg_bot)
     
         temp = message
     
