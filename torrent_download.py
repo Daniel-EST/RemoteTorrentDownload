@@ -2,7 +2,7 @@ import re
 import time
 import subprocess
 
-def torrent_download(message):
+def torrent_download(message, telegram_bot):
     """Checking if message is a torrent mirror link"""
     
     mirror = re.compile(r'/torrent (magnet:.*)')
@@ -19,7 +19,10 @@ def torrent_download(message):
             subprocess.Popen([r'transmission-gtk', mirror.search(message).group(1)])
         except FileNotFoundError:
             pass
-            
-        # TODO: Create my own torrent downloader so I don't need to use a subprocess
+        
+        tg_bot.send_message('Download started!')
+        print('Download started!')
+        
+        ## TODO: Create my own torrent downloader so I don't need to use a subprocess
         
     time.sleep(1)
