@@ -22,15 +22,12 @@ try:
     
         if message!=temp:
             # Checking if message corresponds to an action
-            tg_bot.send_message('Download started!')
-        
-            print('Download started!')
             torrent_download(message)
     
         temp = message
     
         # Giving some time to API server
-        time.sleep(2.5)
+        time.sleep(3)
 except KeyboardInterrupt:
     print('Programm ended')
     
