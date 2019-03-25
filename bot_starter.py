@@ -18,16 +18,20 @@ print('Programm started!')
 try:
     while True:
         # Reads last received message
-        message = tg_bot.read_message()
+        try:
+            message = tg_bot.read_message()
     
-        if message!=temp:
-            # Checking if message corresponds to an action
-            torrent_download(message, tg_bot)
+            if message!=temp:
+                # Checking if message corresponds to an action
+                torrent_download(message, tg_bot)
     
-        temp = message
+            temp = message
     
-        # Giving some time to API server
-        time.sleep(3)
+            # Giving some time to API server
+            time.sleep(3)
+        except IndexError:
+            pass
+
 except KeyboardInterrupt:
     print('Programm ended')
     
